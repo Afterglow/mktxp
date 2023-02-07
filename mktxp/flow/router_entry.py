@@ -30,7 +30,9 @@ class RouterEntry:
             }
         
         self.wifi_package = None
-        self.time_spent =  { CollectorKeys.IDENTITY_COLLECTOR: 0,
+        self.time_spent =  {
+                            CollectorKeys.BGP_SESSION_COLLECTOR: 0, 
+                            CollectorKeys.IDENTITY_COLLECTOR: 0,
                             CollectorKeys.SYSTEM_RESOURCE_COLLECTOR: 0,
                             CollectorKeys.HEALTH_COLLECTOR: 0,
                             CollectorKeys.PUBLIC_IP_ADDRESS_COLLECTOR: 0,

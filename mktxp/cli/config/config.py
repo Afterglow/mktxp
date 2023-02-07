@@ -25,6 +25,7 @@ from mktxp.utils.utils import FSHelper
 '''
 
 class CollectorKeys:
+    BGP_SESSION_COLLECTOR = 'BGPSessionCollector'
     IDENTITY_COLLECTOR = 'IdentityCollector'
     SYSTEM_RESOURCE_COLLECTOR = 'SystemResourceCollector'
     HEALTH_COLLECTOR = 'HealthCollector'

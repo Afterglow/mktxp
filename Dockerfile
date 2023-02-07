@@ -1,5 +1,5 @@
 FROM python:3-alpine
-LABEL org.opencontainers.image.source github.com/akpw/mktxp
+LABEL org.opencontainers.image.source github.com/afterglow/mktxp
 WORKDIR /mktxp
 COPY . .
 RUN pip install ./ && apk add nano

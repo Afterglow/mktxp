@@ -14,6 +14,7 @@
 
 from collections import OrderedDict
 from mktxp.cli.config.config import CollectorKeys
+from mktxp.collector.bgp_session_collector import BGPSessionCollector
 from mktxp.collector.dhcp_collector import DHCPCollector
 from mktxp.collector.package_collector import PackageCollector
 from mktxp.collector.connection_collector import IPConnectionCollector
@@ -45,6 +46,8 @@ class CollectorRegistry:
 
         # bandwidth collector is not router-entry related, so registering directly
         self.bandwidthCollector = BandwidthCollector()
+
+        self.register(CollectorKeys.BGP_SESSION_COLLECTOR, BGPSessionCollector.collect)
 
         self.register(CollectorKeys.IDENTITY_COLLECTOR, IdentityCollector.collect)
         self.register(CollectorKeys.SYSTEM_RESOURCE_COLLECTOR, SystemResourceCollector.collect)
