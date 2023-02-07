@@ -24,7 +24,7 @@ class BGPSessionCollector(BaseCollector):
         if not router_entry.config_entry.bgpsession:
             return
 
-        session_labels = ['']
+        session_labels = ['name']
         session_records = BGPSessionMetricsDataSource.metric_records(router_entry, metric_labels = session_labels)
         if session_records:
             # Compile total sessions records
