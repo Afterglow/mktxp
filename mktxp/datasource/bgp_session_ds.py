@@ -19,12 +19,16 @@ class BGPSessionMetricsDataSource:
 
     @staticmethod
     def metric_records(router_entry, *, metric_labels=None):
+        print(f'In BGP data source')
         if metric_labels is None:
             metric_labels = []
         try:
-            session_records = router_entry.api_connection.router_api().get_resource('/routing/bgp/session').get(active='yes')
+            print(f'Trying to get BGP metrics')
+            session_records = router_entry.api_connection.router_api().get_resource('/routing/bgp/session').get()
+            print(f'Got session metrics')
+            print(session_records)
             return BaseDSProcessor.trimmed_records(
-                router_entry, 
+                router_entry,
                 router_records = session_records,
                 metric_labels=metric_labels
             )

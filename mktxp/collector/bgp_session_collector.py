@@ -21,7 +21,7 @@ class BGPSessionCollector(BaseCollector):
 
     @staticmethod
     def collect(router_entry):
-        if not router_entry.config_entry.bgpsession:
+        if not router_entry.config_entry.bgp_session:
             return
 
         session_labels = ['name']
@@ -32,12 +32,12 @@ class BGPSessionCollector(BaseCollector):
             total_bgp_sessions_records = [{
                 MKTXPConfigKeys.ROUTERBOARD_NAME: router_entry.router_id[MKTXPConfigKeys.ROUTERBOARD_NAME],
                 MKTXPConfigKeys.ROUTERBOARD_ADDRESS: router_entry.router_id[MKTXPConfigKeys.ROUTERBOARD_ADDRESS],
-                'count': total_bgp_sessions_records
+                'count': total_bgp_sessions
             }]
             total_sessions_metrics = BaseCollector.gauge_collector(
                 'bgp_sessions_total_sessions',
                 'Total number of BGP sessions',
-                total_bgp_sessions_records,
+                total_bgp_sessions,
                 'count'
             )
             yield total_sessions_metrics
