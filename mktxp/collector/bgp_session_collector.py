@@ -24,7 +24,7 @@ class BGPSessionCollector(BaseCollector):
         if not router_entry.config_entry.bgp_session:
             return
 
-        session_labels = ['established', 'remote.address', 'remote.as', 'remote.messages', 'remote.bytes', 'local.address', 'local.as', 'local.messages', 'local.bytes']
+        session_labels = ['established', 'remote_address', 'remote_as', 'remote_messages', 'remote_bytes', 'local_address', 'local_as', 'local_messages', 'local_bytes']
         session_records = BGPSessionMetricsDataSource.metric_records(router_entry, metric_labels = session_labels)
         if session_records:
             # Compile total sessions records
@@ -42,7 +42,7 @@ class BGPSessionCollector(BaseCollector):
             )
             yield total_sessions_metrics
 
-            session_labels.remove('remote.bytes')
+            session_labels.remove('remote_bytes')
             bgp_session_metrics_gauge = BaseCollector.gauge_collector(
                 'bgp_session_info',
                 'BGP Established Sessions',

@@ -25,6 +25,7 @@ class BaseDSProcessor:
         if translation_table is None:
             translation_table = {}                 
         dash2_ = lambda x : x.replace('-', '_')
+        dot2_ = lambda x : x.replace('.', '_')
         if len(metric_labels) == 0 and len(router_records) > 0:
             metric_labels = [dash2_(key) for key in router_records[0].keys()]
         metric_labels = set(metric_labels)      
