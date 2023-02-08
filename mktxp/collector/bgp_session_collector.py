@@ -42,12 +42,12 @@ class BGPSessionCollector(BaseCollector):
             )
             yield total_sessions_metrics
 
-            session_labels.remove('remote_bytes')
+            session_labels.remove('established')
             bgp_session_metrics_gauge = BaseCollector.gauge_collector(
                 'bgp_session_info',
-                'BGP Established Sessions',
+                'BGP Sessions',
                 session_records,
-                'remote_bytes',
+                'established',
                 session_labels
             )
             yield bgp_session_metrics_gauge
